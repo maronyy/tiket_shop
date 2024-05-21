@@ -14,6 +14,13 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show] 
   end
   
+  namespace :admin do
+    resources :orders, only: [:update, :show] 
+    #patch 'orders' => 'orders#update', as: 'orders'
+    resources :customers, only: [:index, :show] 
+    resources :items
+  end
+  
     # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers, skip: [:passwords], controllers: {
