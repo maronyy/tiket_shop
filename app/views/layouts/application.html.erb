@@ -12,5 +12,20 @@
 
   <body>
     <%= yield %>
+    
+    <% if customer_signed_in? %>
+     <%= link_to destroy_customer_session_path, method: :delete do %>
+     <p>Log out</p>
+     <% end %>
+    <% end %>
+    
+    <% if admin_signed_in? %>
+     <%= link_to destroy_admin_session_path, method: :delete do %>
+     <p>管理人Log out</p>
+     <% end %>
+    <% end %>
+    
+    
+    
   </body>
 </html>
