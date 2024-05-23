@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    
+    <script src="https://kit.fontawesome.com/495e87bfa1.js" crossorigin="anonymous"></script>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -14,7 +16,7 @@
     <%= yield %>
     
     <% if customer_signed_in? %>
-     <%= link_to destroy_customer_session_path, method: :delete do %>
+     <%= link_to destroy_customer_session_path, method: :delete do%>
      <p>Log out</p>
      <% end %>
     <% end %>
