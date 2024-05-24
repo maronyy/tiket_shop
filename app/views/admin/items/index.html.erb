@@ -1,3 +1,34 @@
-<h1>Admin::Items#index</h1>
-<p>Find me in app/views/admin/items/index.html.erb</p>
 <%= flash[:notice1] %>
+
+  <h1 class ="mt-5">登録商品</h1>
+    <table class="table table-hover">
+        <tr>
+         <th style="width: 10%"></th>
+         <th style="width: 20%">タイトル</th>
+         <th>詳細</th>
+         <th>値段</th>
+         <th>販売ステータス</th>
+        </tr>
+        <% @items.each do |item| %>
+          <tr>
+          <td>
+          <% if item.image.attached? %>
+            <%= image_tag item.image, size: "70x70" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "70x70" %>
+          <% end %>
+          </td>
+          <td>
+          <%= link_to admin_item_path(item.id) do %>
+            <%= item.name %>
+          <% end %>
+          </td>
+          <td><%= item.introduction %></td>
+          <td><%= item.price %></td>
+          <% if item.is_active %>
+            <td class="text-success align-middle text-center">販売中</td>
+          <% else %>
+            <td class="text-secondary align-middle text-center">販売停止中</td>
+          <% end %>
+        <% end %>
+    </table>

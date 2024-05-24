@@ -1,2 +1,23 @@
 <h1>Public::Items#index</h1>
 <p>Find me in app/views/public/items/index.html.erb</p>
+
+  <div class="d-flex flex-wrap">
+    <% @items.each do |item| %>
+      <div class="m-4">
+          <div>
+          <% if item.image.attached? %>
+            <%= image_tag item.image, size: "100x100" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "100x100" %>
+          <% end %>
+          </div>
+          <div>
+            <%= link_to item_path(item.id) do %>
+              <%= item.name %>
+            <% end %>
+          </div>
+          <div><%= item.introduction %></div>
+          <div><%= item.price %></div>
+      </div>  
+    <% end %>
+  </div>
