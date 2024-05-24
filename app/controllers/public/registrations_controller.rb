@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::RegistrationsController < Devise::RegistrationsController
-  before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_sign_up_params, :set_default_is_active, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -60,9 +60,13 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   
+  def set_default_is_active
+    params[:customer][:is_active] = true if params[:customer]
+  end
+
   protected
     def configure_sign_up_params
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :adress, :telephone_number])
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :adress, :telephone_number, :is_active])
     end
   
  end

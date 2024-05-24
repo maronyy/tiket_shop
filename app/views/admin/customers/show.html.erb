@@ -37,7 +37,7 @@
           <tr>
             <th>ステータス</th>
             <td>
-              <% if @customer.is_active %>
+              <% if @customer.is_activee=="t" %>
               <div class="text-success">登録ユーザー</div>
               <% else %>
               <div class="text-secondary">解約済み</div>

@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  # 顧客用
+  # URL /customers/sign_in ...
+  devise_for :customers, skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
   
   scope module: :public do
     root to: 'homes#top'
@@ -8,7 +14,12 @@ Rails.application.routes.draw do
     post 'orders/confirm'
     get 'orders/complete'
     resources :cart_items, only: [:index, :create, :update]
-    resources :customers, only: [:show, :create, :edit, :update, :destroy]
+    resources :customers, only: [:show, :create, :edit, :update]
+    resources :customers do
+      member do
+        patch 'unsubscribe'
+      end
+    end
     resources :items, only: [:index, :show] 
   end
   
@@ -18,13 +29,6 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show] 
     resources :items
   end
-  
-    # 顧客用
-  # URL /customers/sign_in ...
-  devise_for :customers, skip: [:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: 'public/sessions'
-  }
 
   # 管理者用
   # URL /admin/sign_in ...
