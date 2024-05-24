@@ -13,21 +13,59 @@
   </head>
 
   <body>
-    <%= yield %>
     
-    <% if customer_signed_in? %>
-     <%= link_to destroy_customer_session_path, method: :delete do%>
-     <p>Log out</p>
-     <% end %>
-    <% end %>
+    <header class="bg-dark text-white">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <h1>Tiket Shop</h1>
+
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              
+              <% if customer_signed_in? %>
+                <li class="nav-item p-2">
+                  <%= link_to destroy_customer_session_path, method: :delete do%>
+                    <div class="d-inline"><i class="fa-solid fa-sign-out-alt"></i></div>
+                    <p>Log out</p>
+                  <% end %>
+                </li>
+              <% end %>
+  
+              <% if admin_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to destroy_admin_session_path, method: :delete do %>
+                   <p>管理人Log out</p>
+                  <% end %>
+                </li>
+              <% end %>
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
     
-    <% if admin_signed_in? %>
-     <%= link_to destroy_admin_session_path, method: :delete do %>
-     <p>管理人Log out</p>
-     <% end %>
-    <% end %>
+    <main class="content mb-5">
+      <div class="container">
+        <div class="col-2">
+        </div>
+        
+        <div class="col-10">
+          <%= yield %>
+        </div>
+  
+        <div class="col-2">
+        </div>
+        
+      </div>
+    </main>
     
     
-    
+    <footer class="bg-white">
+      <div class="container">
+        <p class="fw-light text-center">ensoukai kitene</p>
+      </div>
+    </footer>
+
   </body>
 </html>

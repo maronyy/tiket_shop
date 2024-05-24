@@ -1,5 +1,12 @@
-<h1>Public::Homes#top</h1>
-<p class="text-primary">.text-primary</p>
-<p>Find me in app/views/public/homes/top.html.erb</p>
-<%= link_to "ログイン", "customers/sign_in"%>
-<%= link_to "管理者", new_admin_session_path %>
+<div class="container text-center">
+    <h1 class="mt-5">Tiket Shopへようこそ</h1>
+    <p>ここではたくさんの演奏会のチケットを販売しています</p>
+    
+    <div class="mt-5">
+        <button type="button" class="btn btn-outline-secondary"><%= link_to "ログイン", "customers/sign_in"%></button>
+        
+        
+        <button type="button" class="btn btn-outline-secondary"><%= link_to "管理者としてログイン", new_admin_session_path %></button>
+    </div>
+
+</div>
