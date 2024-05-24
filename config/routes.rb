@@ -8,9 +8,7 @@ Rails.application.routes.draw do
     post 'orders/confirm'
     get 'orders/complete'
     resources :cart_items, only: [:index, :create, :update]
-    get 'customers/show' => 'customers#show', as: 'customer'
-    get 'customers/edit' => 'customers#edit', as: 'edit_customers'
-    patch 'customers' => 'customers#update', as: 'customers'
+    resources :customers, only: [:show, :create, :edit, :update, :destroy]
     resources :items, only: [:index, :show] 
   end
   
