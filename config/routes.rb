@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show, :new, :create]
     post 'orders/confirm'
     get 'orders/complete'
-    resources :cart_items, only: [:index, :create, :update]
+    resources :cart_items, only: [:index, :create, :update, :destroy]
     resources :customers, only: [:show, :create, :edit, :update]
     resources :customers do
       member do

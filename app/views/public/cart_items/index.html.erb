@@ -3,6 +3,9 @@
     <div class="row col-md-10 mt-4 text-left">
       <h4 class="col align-self-start">ショッピングカート</h4>
     </div>
+    
+    <%= flash[:notice] %>
+    <%= flash[:alert] %>
 
     <div class="cart-items-index col-md-12 mx-auto">
       <table class="table table-bordered border-dark mt-3">
@@ -31,6 +34,9 @@
               <td class="align-middle">
                 <% sum_price = cart_item.item.price * cart_item.amount.to_i %>
                 <%= sum_price.floor.to_s(:delimited) %>
+              </td>
+              <td class="align-middle">
+                <%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger", "data-confirm" => "#{cart_item.item.name}を削除してもよろしいですか？" %>
               </td>
             </tr>
             <% @total_price += sum_price %>
