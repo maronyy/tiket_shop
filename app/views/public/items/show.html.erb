@@ -1,5 +1,6 @@
 <div class="container mt-3">
   <div class="mx-auto col-lg-12">
+
     <div class="row">
       <div class="col-10 offset-1">
         <h3 class="page-title">商品詳細</h3>
@@ -38,8 +39,19 @@
             </td>
           </tr>
         </table>
+        <div class="mt-4">
+          <% if customer_signed_in? && @item.is_active %>
+            <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+              <%= f.hidden_field :item_id, value: @item.id, name: 'cart_item[item_id]' %>
+              <%= f.hidden_field :customer_id, value: current_customer.id, name: 'cart_item[customer_id]' %>
+              <%= f.select :amount, options_for_select(1..10), { include_blank: "個数を選択してください" }, { name: 'cart_item[amount]' } %>
+              <%= f.submit "カートに入れる", class: "btn btn-success ml-3" %>
+            <% end %>
+          <% else %>
+            <h4 class="text-secondary pl-3">販売停止中</h4>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
-
 </div>
