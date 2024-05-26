@@ -1,0 +1,101 @@
+ja:
+  devise:
+    sessions:
+      customer:
+        signed_in: 'ログインしました'
+    failure:
+      admin:
+        invalid: '必須項目を入力してください。'
+        unauthenticated: '管理者ログインを行ってください'
+
+  activerecord:
+    models:
+      admin: '管理者'
+      customer: '顧客'
+      adress: '配送先'
+      item: '商品'
+      genre: 'ジャンル'
+      cart_item: 'カート内商品'
+      order: '注文'
+      order_item: '注文商品'
+
+    errors:
+      messages:
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
+
+    attributes:
+      admin:
+        password: パスワード
+        email: メールアドレス
+      customer:
+        email: メールアドレス
+        password: パスワード
+        first_name: 苗字
+        last_name: 名前
+        first_name_kana: 苗字(カナ)
+        last_name_kana: 名前(カナ)
+        postal_code: 郵便番号
+        adress: 住所
+        phone_number: 電話番号
+      adress:
+        name: 名前
+        postal_code: 郵便番号
+        adress: 住所
+      item:
+        name: 商品名
+        introduction: 説明文
+        price: 価格
+        image: 画像
+        image_id: 画像
+      cart_item:
+        amount: 個数
+  errors:
+    format: "%{attribute}%{message}"
+    messages:
+      not_saved: 入力内容をご確認ください
+      accepted: を受諾してください
+      blank: を入力してください
+      confirmation: と%{attribute}の入力が一致しません
+      empty: を入力してください
+      equal_to: は%{count}にしてください
+      even: は偶数にしてください
+      exclusion: は予約されています
+      greater_than: は%{count}より大きい値にしてください
+      greater_than_or_equal_to: は%{count}以上の値にしてください
+      inclusion: は一覧にありません
+      invalid: は不正な値です
+      less_than: は%{count}より小さい値にしてください
+      less_than_or_equal_to: は%{count}以下の値にしてください
+      model_invalid: 'バリデーションに失敗しました: %{errors}'
+      not_a_number: は数値で入力してください
+      not_an_integer: は整数で入力してください
+      odd: は奇数にしてください
+      other_than: は%{count}以外の値にしてください
+      present: は入力しないでください
+      required: を入力してください
+      taken: はすでに存在します
+      too_long: は%{count}文字以内で入力してください
+      too_short: は%{count}文字以上で入力してください
+      wrong_length: は%{count}文字で入力してください
+    template:
+      body: 次の項目を確認してください
+      header:
+        one: "%{model}にエラーが発生しました"
+        other: "%{model}に%{count}個のエラーが発生しました"
+  helpers:
+    select:
+      prompt: 選択してください
+    submit:
+      create: 登録する
+      submit: 保存する
+      update: 更新する
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      next: "次 &rsaquo;"
+      previous: "&lsaquo; 前"
+      truncate: "&hellip;"
