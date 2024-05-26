@@ -54,7 +54,8 @@
           </tr>
         </table>
         <% if @customer.is_active=="t" %>
-          <%= link_to '編集する', edit_customer_path(@customer), class: "btn btn-success" %>
+          <%= link_to '戻る', items_path, class: "btn btn-primary" %>
+          <%= link_to '編集する', edit_customer_path(@customer), class: "btn btn-success col-2 ml-5" %>
           <%= link_to "退会する", unsubscribe_customer_path(@customer), method: :patch, class: "btn btn-danger col-2 ml-5" %>
         <% end %>
        </div>
