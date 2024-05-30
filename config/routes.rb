@@ -5,14 +5,14 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  
+
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
+    get 'orders/complete' => 'orders#complete'
     resources :orders, only: [:index, :show, :new, :create]
     post 'orders/confirm'
-    get 'orders/complete'
     resources :cart_items, only: [:index, :create, :update, :destroy]
     resources :customers, only: [:show, :create, :edit, :update]
     resources :customers do
@@ -20,13 +20,13 @@ Rails.application.routes.draw do
         patch 'unsubscribe'
       end
     end
-    resources :items, only: [:index, :show] 
+    resources :items, only: [:index, :show]
   end
-  
+
   namespace :admin do
-    resources :orders, only: [:update, :show] 
+    resources :orders, only: [:update, :show]
     #patch 'orders' => 'orders#update', as: 'orders'
-    resources :customers, only: [:index, :show] 
+    resources :customers, only: [:index, :show]
     resources :items
   end
 
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   devise_for :admin ,controllers: {
     sessions: "admin/sessions"
   }
-  
+
   namespace :admin do
     get '/' => 'homes#top', as: 'top'
   end
